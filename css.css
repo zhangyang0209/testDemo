@@ -1,0 +1,45 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+ul{
+    width: 100%;
+    background: bisque;
+}
+li{
+    width: 100%;
+}
+img{
+    display: inline-block;
+    margin: 2%;
+    width: 20%;
+    height: auto;
+}
+p{
+    display: inline-block;
+    width: 10%;
+}
+div{
+    display: none;
+    width: 50%;
+    height: 20%;
+    position: fixed;
+    bottom: 0;
+    left: 25%;
+    background: mediumaquamarine;
+}
+div span{
+    display: inline-block;
+    width: 49%;
+    height: 100%;
+    text-align: center;
+    /*line-height: 100%;*/
+    color: #FFFFFF;
+    font-size: 30px;
+    font-weight: 600;
+}
+div button{
+    width: 49%;
+    height: 100%;
+}

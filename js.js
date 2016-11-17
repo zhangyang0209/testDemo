@@ -12,8 +12,9 @@ $(function ($) {
     var $isOk = $('.isOk');
     var obj = '';
     var obj1 = '';
+    var $boxCon = $('.boxCon');
     $btnNot.click(function () {
-       index--;
+        index--;
         if(index<=1){
             index=1
         }
@@ -35,12 +36,34 @@ $(function ($) {
             return str;
         });
         storage.setItem('bb',index);
-        storage.setItem('aa',str)
+        storage.setItem('aa',str);
+        var thrower = document.createElement('div');
+        document.body.appendChild(thrower);
+        $(thrower).addClass('thrower');
+        var x = $btnAdd[0].offsetLeft;
+        var y = $btnAdd[0].offsetTop;
+        var ax = $box[0].offsetLeft;
+        var ay = $box[0].offsetTop;
+        var flyer = $('.thrower');
+        flyer.fly({
+            start: {
+                left: x,
+                top: y
+            },
+            end: {
+                left: ax,
+                top: ay
+            },
+            onEnd: function(){ //结束回调//提示信息
+                $('.thrower').stop().hide();
+                $boxCon.show().html(obj1)
+            }
+        });
     });
     if(!storage){
         return false
     }else{
-         obj =storage.getItem('aa');
+        obj =storage.getItem('aa');
         obj1 =storage.getItem('bb');
         $box.show();
         $content.val(obj1);
@@ -70,14 +93,14 @@ $(function ($) {
             storage.setItem('aa',str)
         });
     }
-$isOk.click(function () {
-    $.post({
-        url:'/push',
-        data:{
-            aa:str,
-            bb:obj1
-        },
-        type:'json'
+    $isOk.click(function () {
+        $.post({
+            url:'/push',
+            data:{
+                aa:str,
+                bb:obj1
+            },
+            type:'json'
+        })
     })
-})
 });

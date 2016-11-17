@@ -14,6 +14,7 @@ $(function ($) {
     var obj1 = '';
     var $boxCon = $('.boxCon');
     $btnNot.click(function () {
+
         index--;
         if(index<=1){
             index=1
@@ -24,7 +25,8 @@ $(function ($) {
             return str;
         });
         storage.setItem('bb',index);
-        storage.setItem('aa',str)
+        storage.setItem('aa',str);
+        $boxCon.show().html(obj1-1);
     });
     $btnAdd.click(function () {
         index++;
@@ -93,14 +95,5 @@ $(function ($) {
             storage.setItem('aa',str)
         });
     }
-    $isOk.click(function () {
-        $.post({
-            url:'/push',
-            data:{
-                aa:str,
-                bb:obj1
-            },
-            type:'json'
-        })
-    })
+
 });
